@@ -80,4 +80,32 @@ public class GridTest {
 
         assertTrue(result);
     }
+
+    @Test
+    public void shouldCompareFirstMemberCellToItsVerticallyBelowNeighborAndReturnFalseIfItIsNotX() {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("X-\n-X".getBytes());
+        Scanner scanner = new Scanner(byteArrayInputStream);
+        ConsoleInput consoleInput = new ConsoleInput(scanner);
+        ApplicationInput applicationInput = new ApplicationInput(consoleInput);
+        ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
+        Grid grid = new Grid(gridInput);
+
+        boolean result = grid.compare(0, "down");
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void shouldCompareFirstMemberCellToItsDiagonallyRightBelowNeighborAndReturnTrueIfItIsX() {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("X-\n-X".getBytes());
+        Scanner scanner = new Scanner(byteArrayInputStream);
+        ConsoleInput consoleInput = new ConsoleInput(scanner);
+        ApplicationInput applicationInput = new ApplicationInput(consoleInput);
+        ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
+        Grid grid = new Grid(gridInput);
+
+        boolean result = grid.compare(0, "downright");
+
+        assertTrue(result);
+    }
 }
