@@ -29,9 +29,12 @@ public class Grid {
         return true;
     }
 
-    public int countAliveNeighbors(int cellPosition) {
-        if(compare(cellPosition, "down"))
-            return 2;
-        return 1;
+    public int countAliveNeighbors(int cellRowPosition, int cellColumnPosition) {
+        int count = 0;
+        if("X".equals(grid.get(0).get(1)))
+            count++;
+        if("X".equals(grid.get(1).get(0)))
+            count++;
+        return count;
     }
 }

@@ -175,7 +175,7 @@ public class GridTest {
         ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
         Grid grid = new Grid(gridInput);
 
-        int aliveCount = grid.countAliveNeighbors(0);
+        int aliveCount = grid.countAliveNeighbors(0, 0);
 
         assertEquals(1, aliveCount);
     }
@@ -189,7 +189,7 @@ public class GridTest {
         ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
         Grid grid = new Grid(gridInput);
 
-        int aliveCount = grid.countAliveNeighbors(0);
+        int aliveCount = grid.countAliveNeighbors(0, 0);
 
         assertEquals(2, aliveCount);
     }
