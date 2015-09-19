@@ -20,6 +20,8 @@ public class Grid {
             return false;
         else if ("-".equals(grid.get(1).get(1)))
             return false;
+        else if ("upright".equals(neighborPosition))
+            return false;
         return true;
     }
 }
