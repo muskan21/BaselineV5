@@ -1,12 +1,12 @@
 package com.twu.baseline;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class Baseline {
-    ConsoleInput consoleInput;
+public class ApplicationInput {
+    private ArrayList<ArrayList<String>> grid = new ArrayList<ArrayList<String>>();
+    private ConsoleInput consoleInput;
 
-    public Baseline(ConsoleInput consoleInput) {
+    public ApplicationInput(ConsoleInput consoleInput) {
         this.consoleInput = consoleInput;
     }
 
@@ -21,13 +21,12 @@ public class Baseline {
     }
 
     public ArrayList<ArrayList<String>> getGridInput() {
-        ArrayList<ArrayList<String>> gridInput = new ArrayList<ArrayList<String>>();
         ArrayList<String> row1 = getRowInput();
         ArrayList<String> row2 = getRowInput();
         ArrayList<String> row3 = getRowInput();
-        gridInput.add(row1);
-        gridInput.add(row2);
-        gridInput.add(row3);
-        return gridInput;
+        grid.add(row1);
+        grid.add(row2);
+        grid.add(row3);
+        return grid;
     }
 }

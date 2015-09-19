@@ -7,19 +7,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class BaselineTest {
-
+public class ApplicationInputTest {
     @Test
     public void shouldReturnTheInputForOneRowFromAGivenStringInput() {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("XX-".getBytes());
         Scanner scanner = new Scanner(byteArrayInputStream);
         ArrayList<String> testInput = new ArrayList<String>();
         ConsoleInput consoleInput = new ConsoleInput(scanner);
-        Baseline baseline = new Baseline(consoleInput);
-        ArrayList<String> rowInput = baseline.getRowInput();
+        ApplicationInput applicationInput = new ApplicationInput(consoleInput);
+        ArrayList<String> rowInput = applicationInput.getRowInput();
 
         testInput.add("X");
         testInput.add("X");
@@ -34,9 +32,9 @@ public class BaselineTest {
         Scanner scanner = new Scanner(byteArrayInputStream);
         ArrayList<String> testInput = new ArrayList<String>();
         ConsoleInput consoleInput = new ConsoleInput(scanner);
-        Baseline baseline = new Baseline(consoleInput);
+        ApplicationInput applicationInput = new ApplicationInput(consoleInput);
 
-        ArrayList<String> rowInput = baseline.getRowInput();
+        ArrayList<String> rowInput = applicationInput.getRowInput();
 
         testInput.add("X");
         testInput.add("-");
@@ -49,7 +47,7 @@ public class BaselineTest {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("XX-\nX-X\n-X-".getBytes());
         Scanner scanner = new Scanner(byteArrayInputStream);
         ConsoleInput consoleInput = new ConsoleInput(scanner);
-        Baseline baseline = new Baseline(consoleInput);
+        ApplicationInput applicationInput = new ApplicationInput(consoleInput);
         ArrayList<ArrayList<String>> testInput = new ArrayList<ArrayList<String>>();
         ArrayList<String> row1 = new ArrayList<>(Arrays.asList("X", "X", "-"));
         ArrayList<String> row2 = new ArrayList<>(Arrays.asList("X", "-", "X"));
@@ -58,7 +56,7 @@ public class BaselineTest {
         testInput.add(row2);
         testInput.add(row3);
 
-        ArrayList<ArrayList<String>> gridInput = baseline.getGridInput();
+        ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
 
         assertEquals(gridInput, testInput);
     }
@@ -68,7 +66,7 @@ public class BaselineTest {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("XXX\nX-X\n-X-".getBytes());
         Scanner scanner = new Scanner(byteArrayInputStream);
         ConsoleInput consoleInput = new ConsoleInput(scanner);
-        Baseline baseline = new Baseline(consoleInput);
+        ApplicationInput applicationInput = new ApplicationInput(consoleInput);
         ArrayList<ArrayList<String>> testInput = new ArrayList<ArrayList<String>>();
         ArrayList<String> row1 = new ArrayList<>(Arrays.asList("X", "X", "X"));
         ArrayList<String> row2 = new ArrayList<>(Arrays.asList("X", "-", "X"));
@@ -77,7 +75,7 @@ public class BaselineTest {
         testInput.add(row2);
         testInput.add(row3);
 
-        ArrayList<ArrayList<String>> gridInput = baseline.getGridInput();
+        ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
 
         assertEquals(gridInput, testInput);
     }
