@@ -17,6 +17,8 @@ public class Grid {
             count++;
         if(cellColumnPosition != 0 && "X".equals(grid.get(cellRowPosition).get(cellColumnPosition - 1)))
             count++;
+        if(cellRowPosition != 0 && "X".equals(grid.get(cellRowPosition - 1).get(cellColumnPosition)))
+            count++;
         return count;
     }
 }
