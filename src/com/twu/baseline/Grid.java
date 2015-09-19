@@ -18,6 +18,8 @@ public class Grid {
             return false;
         else if ("-".equals(grid.get(1).get(0)) && "down".equals(neighborPosition))
             return false;
+        else if ("-".equals(grid.get(1).get(1)))
+            return false;
         return true;
     }
 }

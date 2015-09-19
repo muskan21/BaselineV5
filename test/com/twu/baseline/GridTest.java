@@ -108,4 +108,18 @@ public class GridTest {
 
         assertTrue(result);
     }
+
+    @Test
+    public void shouldCompareFirstMemberCellToItsDiagonallyRightBelowNeighborAndReturnFalseIfItIsNotX() {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("X-\n--".getBytes());
+        Scanner scanner = new Scanner(byteArrayInputStream);
+        ConsoleInput consoleInput = new ConsoleInput(scanner);
+        ApplicationInput applicationInput = new ApplicationInput(consoleInput);
+        ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
+        Grid grid = new Grid(gridInput);
+
+        boolean result = grid.compare(0, "downright");
+
+        assertFalse(result);
+    }
 }
