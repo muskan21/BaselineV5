@@ -51,4 +51,18 @@ public class GridTest {
 
         assertEquals(2, aliveCount);
     }
+
+    @Test
+    public void shouldReturnTwoAliveNeighborsForAMemberCellIfLeftAndBelowNeighborIsX() {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("X--\n-X-\n---".getBytes());
+        Scanner scanner = new Scanner(byteArrayInputStream);
+        ConsoleInput consoleInput = new ConsoleInput(scanner);
+        ApplicationInput applicationInput = new ApplicationInput(consoleInput);
+        ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
+        Grid grid = new Grid(gridInput);
+
+        int aliveCount = grid.countAliveNeighbors(0, 1);
+
+        assertEquals(2, aliveCount);
+    }
 }
