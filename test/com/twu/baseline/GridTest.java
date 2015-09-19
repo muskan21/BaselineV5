@@ -167,8 +167,8 @@ public class GridTest {
     }
 
     @Test
-    public void shouldReturnTheNumberOfAliveNeighborsForTheFirstMemberCell() {
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("-XX\nXXX\n---".getBytes());
+    public void shouldReturnTOneAliveNeighborsForTheFirstMemberCellIfLeftNeighborIsX() {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("-X-\n---\n---".getBytes());
         Scanner scanner = new Scanner(byteArrayInputStream);
         ConsoleInput consoleInput = new ConsoleInput(scanner);
         ApplicationInput applicationInput = new ApplicationInput(consoleInput);
@@ -177,6 +177,6 @@ public class GridTest {
 
         int aliveCount = grid.countAliveNeighbors(0);
 
-        assertEquals(4, aliveCount);
+        assertEquals(1, aliveCount);
     }
 }

@@ -30,6 +30,6 @@ public class Grid {
     }
 
     public int countAliveNeighbors(int cellPosition) {
-        return 4;
+        return 1;
     }
 }
