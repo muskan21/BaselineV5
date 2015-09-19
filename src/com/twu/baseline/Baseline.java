@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Baseline {
-    public String getInput(Scanner scanner) {
-        Scanner read = scanner;
-        return scanner.nextLine();
+    ConsoleInput consoleInput;
+
+    public Baseline(ConsoleInput consoleInput) {
+        this.consoleInput = consoleInput;
     }
 
-    public ArrayList<String> getRowInput(Scanner scanner) {
+    public ArrayList<String> getRowInput() {
         ArrayList<String> rowInput = new ArrayList<String>();
         for (int i = 0; i < 3; i++) {
-            rowInput.add(getInput(scanner));
+            rowInput.add(consoleInput.getInput());
         }
         return rowInput;
     }

@@ -11,34 +11,13 @@ import static org.junit.Assert.assertEquals;
 public class BaselineTest {
 
     @Test
-    public void shouldReturnTheAliveCellInput() {
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("X".getBytes());
-        Scanner scanner = new Scanner(byteArrayInputStream);
-        String testInput;
-        Baseline baseline = new Baseline();
-        testInput = baseline.getInput(scanner);
-
-        assertEquals("X", testInput);
-    }
-
-    @Test
-    public void shouldReturnTheDeadCellInput() {
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("-".getBytes());
-        Scanner scanner = new Scanner(byteArrayInputStream);
-        String testInput;
-        Baseline baseline = new Baseline();
-        testInput = baseline.getInput(scanner);
-
-        assertEquals("-", testInput);
-    }
-
-    @Test
     public void shouldReturnTheInputForOneRow() {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("X\nX\n-".getBytes());
         Scanner scanner = new Scanner(byteArrayInputStream);
         ArrayList<String> testInput = new ArrayList<String>();
-        Baseline baseline = new Baseline();
-        ArrayList<String> rowInput = baseline.getRowInput(scanner);
+        ConsoleInput consoleInput = new ConsoleInput(scanner);
+        Baseline baseline = new Baseline(consoleInput);
+        ArrayList<String> rowInput = baseline.getRowInput();
 
         testInput.add("X");
         testInput.add("X");
@@ -53,8 +32,9 @@ public class BaselineTest {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("X\n-\n-".getBytes());
         Scanner scanner = new Scanner(byteArrayInputStream);
         ArrayList<String> testInput = new ArrayList<String>();
-        Baseline baseline = new Baseline();
-        ArrayList<String> rowInput = baseline.getRowInput(scanner);
+        ConsoleInput consoleInput = new ConsoleInput(scanner);
+        Baseline baseline = new Baseline(consoleInput);
+        ArrayList<String> rowInput = baseline.getRowInput();
 
         testInput.add("X");
         testInput.add("-");
