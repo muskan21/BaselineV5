@@ -22,9 +22,9 @@ public class Baseline {
 
     public ArrayList<ArrayList<String>> getGridInput() {
         ArrayList<ArrayList<String>> gridInput = new ArrayList<ArrayList<String>>();
-        ArrayList<String> row1 = new ArrayList<>(Arrays.asList("X", "X", "-"));
-        ArrayList<String> row2 = new ArrayList<>(Arrays.asList("X", "-", "X"));
-        ArrayList<String> row3 = new ArrayList<>(Arrays.asList("-", "X", "-"));
+        ArrayList<String> row1 = getRowInput();
+        ArrayList<String> row2 = getRowInput();
+        ArrayList<String> row3 = getRowInput();
         gridInput.add(row1);
         gridInput.add(row2);
         gridInput.add(row3);
