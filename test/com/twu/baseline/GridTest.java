@@ -52,4 +52,18 @@ public class GridTest {
 
         assertFalse(result);
     }
+
+    @Test
+    public void shouldCompareFirstMemberCellToItsVerticallyAboveNeighborAndReturnFalse() {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("XX\nXX".getBytes());
+        Scanner scanner = new Scanner(byteArrayInputStream);
+        ConsoleInput consoleInput = new ConsoleInput(scanner);
+        ApplicationInput applicationInput = new ApplicationInput(consoleInput);
+        ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
+        Grid grid = new Grid(gridInput);
+
+        boolean result = grid.compare(0, 2);
+
+        assertFalse(result);
+    }
 }

@@ -14,6 +14,8 @@ public class Grid {
             return false;
         else if(cellPosition == 0 && neighborPosition == -1)
             return false;
+        else if (cellPosition == 0 && neighborPosition == 2)
+            return false;
         return true;
     }
 }
