@@ -25,6 +25,20 @@ public class GridTest {
     }
 
     @Test
+    public void shouldReturnTOneAliveNeighborsForAMemberCellIfOnlyItsRightNeighborIsX() {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("---\n---\n--X".getBytes());
+        Scanner scanner = new Scanner(byteArrayInputStream);
+        ConsoleInput consoleInput = new ConsoleInput(scanner);
+        ApplicationInput applicationInput = new ApplicationInput(consoleInput);
+        ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
+        Grid grid = new Grid(gridInput);
+
+        int aliveCount = grid.countAliveNeighbors(2, 1);
+
+        assertEquals(1, aliveCount);
+    }
+
+    @Test
     public void shouldReturnTwoAliveNeighborsForTheFirstMemberCellIfRightAndBelowNeighborIsX() {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("-X-\nX--\n---".getBytes());
         Scanner scanner = new Scanner(byteArrayInputStream);

@@ -11,9 +11,9 @@ public class Grid {
 
     public int countAliveNeighbors(int cellRowPosition, int cellColumnPosition) {
         int count = 0;
-        if("X".equals(grid.get(cellRowPosition).get(cellColumnPosition + 1)))
+        if(cellColumnPosition != grid.size() - 1 && "X".equals(grid.get(cellRowPosition).get(cellColumnPosition + 1)))
             count++;
-        if("X".equals(grid.get(cellRowPosition + 1).get(cellColumnPosition)))
+        if(cellRowPosition != grid.size() - 1 && "X".equals(grid.get(cellRowPosition + 1).get(cellColumnPosition)))
             count++;
         if(cellColumnPosition != 0 && "X".equals(grid.get(cellRowPosition).get(cellColumnPosition - 1)))
             count++;
