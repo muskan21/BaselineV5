@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,10 +13,10 @@ public class BaselineTest {
     @Test
     public void shouldReturnTheAliveCellInput() {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("X".getBytes());
-        System.setIn(byteArrayInputStream);
+        Scanner scanner = new Scanner(byteArrayInputStream);
         String testInput;
         Baseline baseline = new Baseline();
-        testInput = baseline.getInput();
+        testInput = baseline.getInput(scanner);
 
         assertEquals("X", testInput);
     }
@@ -23,10 +24,10 @@ public class BaselineTest {
     @Test
     public void shouldReturnTheDeadCellInput() {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("-".getBytes());
-        System.setIn(byteArrayInputStream);
+        Scanner scanner = new Scanner(byteArrayInputStream);
         String testInput;
         Baseline baseline = new Baseline();
-        testInput = baseline.getInput();
+        testInput = baseline.getInput(scanner);
 
         assertEquals("-", testInput);
     }
@@ -34,15 +35,32 @@ public class BaselineTest {
     @Test
     public void shouldReturnTheInputForOneRow() {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("X\nX\n-".getBytes());
-        System.setIn(byteArrayInputStream);
+        Scanner scanner = new Scanner(byteArrayInputStream);
         ArrayList<String> testInput = new ArrayList<String>();
         Baseline baseline = new Baseline();
-        ArrayList<String> rowInput = baseline.getRowInput();
+        ArrayList<String> rowInput = baseline.getRowInput(scanner);
 
         testInput.add("X");
         testInput.add("X");
         testInput.add("-");
 
         assertEquals(testInput, rowInput);
+        System.setIn(System.in);
+    }
+
+    @Test
+    public void shouldReturnTheInputForAnotherSize3Row() {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("X\n-\n-".getBytes());
+        Scanner scanner = new Scanner(byteArrayInputStream);
+        ArrayList<String> testInput = new ArrayList<String>();
+        Baseline baseline = new Baseline();
+        ArrayList<String> rowInput = baseline.getRowInput(scanner);
+
+        testInput.add("X");
+        testInput.add("-");
+        testInput.add("-");
+
+        assertEquals(testInput, rowInput);
+        System.setIn(System.in);
     }
 }
