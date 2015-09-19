@@ -18,7 +18,7 @@ public class Grid {
             return false;
         else if ("-".equals(grid.get(1).get(0)) && "down".equals(neighborPosition))
             return false;
-        else if ("-".equals(grid.get(1).get(1)))
+        else if ("-".equals(grid.get(1).get(1)) && "downright".equals(neighborPosition))
             return false;
         else if ("upright".equals(neighborPosition))
             return false;
@@ -30,6 +30,8 @@ public class Grid {
     }
 
     public int countAliveNeighbors(int cellPosition) {
+        if(compare(cellPosition, "down"))
+            return 2;
         return 1;
     }
 }
