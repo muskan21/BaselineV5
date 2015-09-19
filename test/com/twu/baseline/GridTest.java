@@ -38,4 +38,18 @@ public class GridTest {
 
         assertFalse(result);
     }
+
+    @Test
+    public void shouldCompareFirstMemberCellToItsHorizontallyLeftNeighborAndReturnFalse() {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("XX\nXX".getBytes());
+        Scanner scanner = new Scanner(byteArrayInputStream);
+        ConsoleInput consoleInput = new ConsoleInput(scanner);
+        ApplicationInput applicationInput = new ApplicationInput(consoleInput);
+        ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
+        Grid grid = new Grid(gridInput);
+
+        boolean result = grid.compare(0, -1);
+
+        assertFalse(result);
+    }
 }

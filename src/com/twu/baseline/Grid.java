@@ -12,6 +12,8 @@ public class Grid {
     public boolean compare(int cellPosition, int neighborPosition) {
         if("-".equals(grid.get(0).get(1)))
             return false;
+        else if(cellPosition == 0 && neighborPosition == -1)
+            return false;
         return true;
     }
 }
