@@ -22,11 +22,12 @@ public class ApplicationInput {
 
     public ArrayList<ArrayList<String>> getGridInput() {
         ArrayList<String> row1 = getRowInput();
-        ArrayList<String> row2 = getRowInput();
-        ArrayList<String> row3 = getRowInput();
         grid.add(row1);
-        grid.add(row2);
-        grid.add(row3);
+        int size = row1.size();
+        for (int i = 0; i < size - 1; i++) {
+            row1 = getRowInput();
+            grid.add(row1);
+        }
         return grid;
     }
 }

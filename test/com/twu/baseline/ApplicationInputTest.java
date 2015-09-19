@@ -79,4 +79,21 @@ public class ApplicationInputTest {
 
         assertEquals(gridInput, testInput);
     }
+
+    @Test
+    public void shouldReturnTheInputForATwoSizeGridFromVariousStringInputs() {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("XX\nX-".getBytes());
+        Scanner scanner = new Scanner(byteArrayInputStream);
+        ConsoleInput consoleInput = new ConsoleInput(scanner);
+        ApplicationInput applicationInput = new ApplicationInput(consoleInput);
+        ArrayList<ArrayList<String>> testInput = new ArrayList<ArrayList<String>>();
+        ArrayList<String> row1 = new ArrayList<>(Arrays.asList("X", "X"));
+        ArrayList<String> row2 = new ArrayList<>(Arrays.asList("X", "-"));
+        testInput.add(row1);
+        testInput.add(row2);
+
+        ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
+
+        assertEquals(gridInput, testInput);
+    }
 }
