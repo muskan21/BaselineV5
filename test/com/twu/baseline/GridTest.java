@@ -6,6 +6,7 @@ import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -163,5 +164,19 @@ public class GridTest {
         boolean result = grid.compare(0, "downleft");
 
         assertFalse(result);
+    }
+
+    @Test
+    public void shouldReturnTheNumberOfAliveNeighborsForTheFirstMemberCell() {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("-XX\nXXX\n---".getBytes());
+        Scanner scanner = new Scanner(byteArrayInputStream);
+        ConsoleInput consoleInput = new ConsoleInput(scanner);
+        ApplicationInput applicationInput = new ApplicationInput(consoleInput);
+        ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
+        Grid grid = new Grid(gridInput);
+
+        int aliveCount = grid.countAliveNeighbors(0);
+
+        assertEquals(4, aliveCount);
     }
 }

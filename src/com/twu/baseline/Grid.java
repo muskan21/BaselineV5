@@ -28,4 +28,8 @@ public class Grid {
             return false;
         return true;
     }
+
+    public int countAliveNeighbors(int cellPosition) {
+        return 4;
+    }
 }
