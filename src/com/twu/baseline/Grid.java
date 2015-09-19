@@ -22,6 +22,8 @@ public class Grid {
             return false;
         else if ("upright".equals(neighborPosition))
             return false;
+        else if ("upleft".equals(neighborPosition))
+            return false;
         return true;
     }
 }
