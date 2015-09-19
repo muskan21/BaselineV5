@@ -9,12 +9,12 @@ public class Grid {
         this.grid = grid;
     }
 
-    public boolean compare(int cellPosition, int neighborPosition) {
-        if("-".equals(grid.get(0).get(1)))
+    public boolean compare(int cellPosition, String neighborPosition) {
+        if("-".equals(grid.get(0).get(1)) && "right".equals(neighborPosition))
             return false;
-        else if(cellPosition == 0 && neighborPosition == -1)
+        else if("left".equals(neighborPosition))
             return false;
-        else if (cellPosition == 0 && neighborPosition == 2)
+        else if ("up".equals(neighborPosition))
             return false;
         return true;
     }

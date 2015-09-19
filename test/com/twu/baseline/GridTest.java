@@ -20,7 +20,7 @@ public class GridTest {
         ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
         Grid grid = new Grid(gridInput);
 
-        boolean result = grid.compare(0, 1);
+        boolean result = grid.compare(0, "right");
 
         assertTrue(result);
     }
@@ -34,7 +34,7 @@ public class GridTest {
         ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
         Grid grid = new Grid(gridInput);
 
-        boolean result = grid.compare(0, 1);
+        boolean result = grid.compare(0, "right");
 
         assertFalse(result);
     }
@@ -48,7 +48,7 @@ public class GridTest {
         ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
         Grid grid = new Grid(gridInput);
 
-        boolean result = grid.compare(0, -1);
+        boolean result = grid.compare(0, "left");
 
         assertFalse(result);
     }
@@ -62,8 +62,22 @@ public class GridTest {
         ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
         Grid grid = new Grid(gridInput);
 
-        boolean result = grid.compare(0, 2);
+        boolean result = grid.compare(0, "up");
 
         assertFalse(result);
+    }
+
+    @Test
+    public void shouldCompareFirstMemberCellToItsVerticallyBelowNeighborAndReturnTrueIfItsX() {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("X-\nXX".getBytes());
+        Scanner scanner = new Scanner(byteArrayInputStream);
+        ConsoleInput consoleInput = new ConsoleInput(scanner);
+        ApplicationInput applicationInput = new ApplicationInput(consoleInput);
+        ArrayList<ArrayList<String>> gridInput = applicationInput.getGridInput();
+        Grid grid = new Grid(gridInput);
+
+        boolean result = grid.compare(0, "down");
+
+        assertTrue(result);
     }
 }
