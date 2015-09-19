@@ -1,0 +1,39 @@
+<project name="com.twu.baseline" default="runTest" basedir=".">
+
+    <property name="project.name" value="BaselineV5"></property>
+    <property name="package.name" value="com.twu.baseline"/>
+
+    <target name = "init">
+        <mkdir dir="out" />
+    </target>
+
+    <target name="build" depends="clean,init">
+        <javac destdir="out">
+            <src path="src:test"/>
+            <classpath location = "lib/junit-4.12.jar"/>
+            <classpath location="lib/mockito-all-1.9.5.jar"/>
+            <classpath location="lib/hamcrest-core-1.3.jar"/>
+        </javac>
+    </target>
+
+    <target name="runTest" depends="build">
+        <junit printsummary="true" haltonfailure="true" outputtoformatters="true">
+            <classpath>
+                <pathelement location="lib/junit-4.12.jar"/>
+                <pathelement location="lib/mockito-all-1.9.5.jar"/>
+                <pathelement location="lib/hamcrest-core-1.3.jar"/>
+                <pathelement location="out"/>
+            </classpath>
+
+            <batchtest fork="yes" haltonfailure="true">
+                <fileset dir="out" includes="**/*Test*.class"/>
+            </batchtest>
+            <formatter type="plain" usefile="false"/>
+        </junit>
+    </target>
+
+    <target name="clean">
+        <delete dir="out"/>
+    </target>
+
+</project>
