@@ -1,7 +1,6 @@
 package com.twu.baseline;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Baseline {
     ConsoleInput consoleInput;
@@ -11,9 +10,11 @@ public class Baseline {
     }
 
     public ArrayList<String> getRowInput() {
+        String input = consoleInput.getInput();
+        int length = input.length();
         ArrayList<String> rowInput = new ArrayList<String>();
-        for (int i = 0; i < 3; i++) {
-            rowInput.add(consoleInput.getInput());
+        for (int i = 0; i < length; i++) {
+            rowInput.add((input.substring(i, i+1)));
         }
         return rowInput;
     }

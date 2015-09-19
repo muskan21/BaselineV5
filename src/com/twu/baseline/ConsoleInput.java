@@ -1,3 +1,4 @@
+//Reads The Console Input From The User And Returns It As A String.
 package com.twu.baseline;
 
 import java.util.Scanner;

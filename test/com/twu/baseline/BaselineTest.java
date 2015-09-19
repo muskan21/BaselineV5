@@ -6,13 +6,14 @@ import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class BaselineTest {
 
     @Test
-    public void shouldReturnTheInputForOneRow() {
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("X\nX\n-".getBytes());
+    public void shouldReturnTheInputForOneRowFromAGivenStringInput() {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("XX-".getBytes());
         Scanner scanner = new Scanner(byteArrayInputStream);
         ArrayList<String> testInput = new ArrayList<String>();
         ConsoleInput consoleInput = new ConsoleInput(scanner);
@@ -24,12 +25,11 @@ public class BaselineTest {
         testInput.add("-");
 
         assertEquals(testInput, rowInput);
-        System.setIn(System.in);
     }
 
     @Test
-    public void shouldReturnTheInputForAnotherSize3Row() {
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("X\n-\n-".getBytes());
+    public void shouldReturnTheInputForAnotherSize3RowFromAGivenStringInput() {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("X--".getBytes());
         Scanner scanner = new Scanner(byteArrayInputStream);
         ArrayList<String> testInput = new ArrayList<String>();
         ConsoleInput consoleInput = new ConsoleInput(scanner);
@@ -41,6 +41,5 @@ public class BaselineTest {
         testInput.add("-");
 
         assertEquals(testInput, rowInput);
-        System.setIn(System.in);
     }
 }
